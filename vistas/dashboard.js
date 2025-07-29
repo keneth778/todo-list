@@ -4,7 +4,7 @@ import { footer } from "../modulos/footer/footercomponente.js";
 
 export function dashboard() {
 
- let seccion = document.createElement('seccion');
+let seccion = document.createElement('section');
   
  //header
 seccion.appendChild(header());
