@@ -1,14 +1,17 @@
-export function footer() {
-    const footer = document.createElement('footer');
-    footer.className = 'main-footer';
+export function footer(){
+    let footer = document.createElement('footer');
 
-    const link = document.createElement('a');
+    let link = document.createElement('a');
     link.href = 'https://github.com/keneth778/todo-list'; // URL completa a GitHub
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = '@keneth778';
-    link.className = 'footer-link';
+    link.target = "_blank"; // Abre en nueva pestaña
 
+    let gitBox = document.createElement('div');
+    gitBox.className = "github-box";
+    gitBox.innerText = "GitHub";
+
+    link.appendChild(gitBox);
     footer.appendChild(link);
+
     return footer;
 }
+
