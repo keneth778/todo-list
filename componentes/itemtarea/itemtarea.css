@@ -1,0 +1,79 @@
+/* itemtarea.css */
+.tarea-item {
+  display: flex;
+  align-items: flex-start; /* antes era center */
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.tarea-numero {
+  min-width: 32px;
+  font-weight: bold;
+  background: #e0e0e0;
+  border-radius: 6px;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.tarea-cuerpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tarea-titulo {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tarea-fechas {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.tarea-estado {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* estados */
+.tarea-estado.completado {
+  background: #d1f7cc;
+  color: #0f6f3a;
+  border: 1px solid #9de59c;
+}
+
+.tarea-estado.pendiente {
+  background: #fff4ce;
+  color: #846a00;
+  border: 1px solid #f0d87f;
+}
+
+.tarea-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.accion-icono {
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background .2s;
+}
+
+.accion-icono:hover {
+  background: rgba(0,0,0,0.05);
+}

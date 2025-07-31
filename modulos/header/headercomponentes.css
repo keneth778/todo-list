@@ -1,45 +1,48 @@
+/* header se queda igual si lo quieres como está */
 header {
-    display: grid;
-    grid-template-columns: 1fr 20rem auto;
-    align-items: center;
-    padding: 1rem;
-    gap: 1rem;
-    background-color: white;
-    border-bottom: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: 1fr 20rem auto;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
 }
 
 h1 {
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
+/* contenedor de tareas: ya no centra internamente */
 .div-tareas {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.9rem;
-    background-color: white;
-    gap: 0.5rem;
+  display: flex;
+  align-items: flex-start; /* que los ítems empiecen arriba */
+  /* si no quieres que todo esté pegado al centro horizontal, quita justify-content */
+  gap: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  background-color: white;
 }
 
+/* si necesitas un contador aparte */
 .contador-tareas {
-    background-color: #f0f0f0;
-    border-radius: 0.4rem;
-    padding: 0.1rem 0.5rem;
-    font-weight: bold;
+  background-color: #f0f0f0;
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.5rem;
+  font-weight: bold;
 }
 
 .div-Logo-usuario {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 100%;
-    border: 1px solid black;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  border: 1px solid black;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
