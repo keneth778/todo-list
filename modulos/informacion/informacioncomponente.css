@@ -1,3 +1,80 @@
 .div-informacion{
     border: 1px solid red;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+
+}
+
+.div-btn {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-tarea {
+    background-color: #3eafff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-archivados {
+    background-color: #eeeeee;
+    border: 1px solid #aaa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.div-texto {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #ccc;
+    max-width: 400px;
+    position: relative;
+}
+
+.estado {
+    background-color: #c5f7ce;
+    color: #2b7a2b;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-weight: bold;
+}
+
+.div-texto h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.div-texto p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.div-integrantes p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.div-asignaciones {
+    display: flex;
+    gap: 10px;
+    font-size: 2rem;
+}
+
+.img-integrante {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid black;
 }

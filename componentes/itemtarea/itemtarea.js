@@ -1,58 +1,55 @@
-// itemtarea.js
-export function tarea(indice, titulo, estado, fechaAs, fechaEn, listaintegrantes = []) {
-  const contenedor = document.createElement('div');
-  contenedor.className = 'tarea-item';
+export function itemTarea(indice, titulo, estado, fechaAs, fechaEn, lista) {
+    let div = document.createElement('div');
+    div.className = "tarea-item"; // clase general del contenedor
 
-  // Número
-  const divNumero = document.createElement('div');
-  divNumero.className = 'tarea-numero';
-  divNumero.textContent = indice;
+    // número
+    let divNumero = document.createElement('div');
+    divNumero.className = "div-numero";
+    divNumero.textContent = indice;
+    div.appendChild(divNumero);
 
-  // Contenido principal: título y fechas
-  const cuerpo = document.createElement('div');
-  cuerpo.className = 'tarea-cuerpo';
+    // título
+    let h3Titulo = document.createElement('h3');
+    h3Titulo.className = "tarea-titulo";
+    h3Titulo.textContent = titulo;
+    div.appendChild(h3Titulo);
 
-  const tituloEl = document.createElement('h3');
-  tituloEl.className = 'tarea-titulo';
-  tituloEl.textContent = titulo;
+    // estado
+    let divEstado = document.createElement('div');
+    divEstado.className = "tarea-estado";
+    divEstado.textContent = estado;
+    div.appendChild(divEstado);
 
-  // Estado (badge)
-  const estadoEl = document.createElement('div');
-  estadoEl.className = `tarea-estado ${estado.toLowerCase()}`; // por ejemplo "completado"
-  estadoEl.textContent = estado;
+    // fecha asignación
+    let spanFechaAs = document.createElement('span');
+    spanFechaAs.className = "tarea-fecha-asignacion";
+    spanFechaAs.textContent = "Asignada: " + fechaAs;
+    div.appendChild(spanFechaAs);
 
-  // Fechas
-  const fechas = document.createElement('div');
-  fechas.className = 'tarea-fechas';
-  const desde = document.createElement('span');
-  desde.className = 'fecha-asignada';
-  desde.textContent = fechaAs || '';
-  const hasta = document.createElement('span');
-  hasta.className = 'fecha-entrega';
-  hasta.textContent = fechaEn || '';
-  fechas.appendChild(desde);
-  fechas.appendChild(document.createTextNode(' · '));
-  fechas.appendChild(hasta);
+    // fecha entrega
+    let spanFechaEn = document.createElement('span');
+    spanFechaEn.className = "tarea-fecha-entrega";
+    spanFechaEn.textContent = "Entrega: " + fechaEn;
+    div.appendChild(spanFechaEn);
 
-  cuerpo.appendChild(tituloEl);
-  cuerpo.appendChild(fechas);
+    // lista de integrantes
+    let divLista = document.createElement('div');
+    divLista.className = "tarea-integrantes";
+    lista.forEach(nombre => {
+        let p = document.createElement('p');
+        p.textContent = nombre;
+        divLista.appendChild(p);
+    });
+    div.appendChild(divLista);
 
-  // Área de íconos (puedes sustituir por tus SVG o imágenes)
-  const acciones = document.createElement('div');
-  acciones.className = 'tarea-acciones';
-  // ejemplo de tres íconos simples
-  ['🔍', '✏️', '🗑️'].forEach(icon => {
-    const span = document.createElement('span');
-    span.className = 'accion-icono';
-    span.textContent = icon;
-    acciones.appendChild(span);
-  });
+    // botón eliminar tarea
+    let divEliminar = document.createElement('div');
+    divEliminar.className = "tarea-eliminar";
+    divEliminar.textContent = "🗑";
+    divEliminar.style.cursor = "pointer";
+    // Puedes agregarle un event listener si deseas:
+    // divEliminar.addEventListener('click', () => eliminarTarea(indice));
+    div.appendChild(divEliminar);
 
-  // Armado final
-  contenedor.appendChild(divNumero);
-  contenedor.appendChild(cuerpo);
-  contenedor.appendChild(estadoEl);
-  contenedor.appendChild(acciones);
-
-  return contenedor;
+    return div;
 }
