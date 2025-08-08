@@ -1,11 +1,41 @@
-.dashboard{
+.dashboard {
     height: 100vh;
     padding: 1rem;
     display: grid;
     grid-template-rows: auto 1fr auto;
-
 }
-.seccion-1{
+
+.seccion-1 {
     display: grid;
     grid-template-columns: 75% 25%;
+    gap: 1rem;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 0.5rem;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .seccion-1 {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: 1rem;
+        background-color: transparent;
+        padding: 0;
+    }
+    
+    /* El panel de información va abajo en móviles */
+    .seccion-1 > *:nth-child(2) {
+        order: 2;
+    }
+    
+    .seccion-1 > *:nth-child(1) {
+        order: 1;
+    }
 }

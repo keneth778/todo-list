@@ -1,4 +1,4 @@
-export function informacion(tarea) {
+export function informacion(tarea,onAddTareaClick) {
     let div = document.createElement('div');
     div.className = "div-informacion";
 
@@ -9,6 +9,8 @@ export function informacion(tarea) {
     let btnTarea = document.createElement('button');
     btnTarea.className = "btn-tarea";
     btnTarea.innerText = "+ tarea";
+    btnTarea.addEventListener('click', onAddTareaClick);
+   
 
     let btnArchivados = document.createElement('button');
     btnArchivados.className = "btn-archivados";

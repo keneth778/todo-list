@@ -1,14 +1,20 @@
 /* itemtarea.css */
 .tarea-item {
   display: flex;
-  align-items: flex-start; /* antes era center */
+  align-items: flex-start;
   gap: 12px;
-  padding: 8px 12px;
+  padding: 12px 16px;
   border-radius: 8px;
   background: #f9f9f9;
-  font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.2s ease;
+}
+
+.tarea-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .tarea-numero {
@@ -32,11 +38,15 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
+  color: #333;
 }
 
 .tarea-fechas {
   font-size: 0.75rem;
   color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .tarea-estado {
@@ -46,6 +56,7 @@
   font-weight: 600;
   text-transform: capitalize;
   white-space: nowrap;
+  align-self: flex-start;
 }
 
 /* estados */
@@ -61,9 +72,16 @@
   border: 1px solid #f0d87f;
 }
 
+.tarea-estado.en-progreso {
+  background: #cce7ff;
+  color: #0066cc;
+  border: 1px solid #80ccff;
+}
+
 .tarea-acciones {
   display: flex;
   gap: 8px;
+  align-items: flex-start;
 }
 
 .accion-icono {
@@ -71,9 +89,64 @@
   font-size: 1.1rem;
   padding: 4px;
   border-radius: 6px;
-  transition: background .2s;
+  transition: background 0.2s;
 }
 
 .accion-icono:hover {
   background: rgba(0,0,0,0.05);
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .tarea-item {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    background: white;
+  }
+
+  .tarea-numero {
+    align-self: center;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .tarea-cuerpo {
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .tarea-titulo {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .tarea-fechas {
+    align-items: center;
+    text-align: center;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+
+  .tarea-estado {
+    align-self: center;
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+
+  .tarea-acciones {
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .accion-icono {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
 }

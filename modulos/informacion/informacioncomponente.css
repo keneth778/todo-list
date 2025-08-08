@@ -1,8 +1,9 @@
-.div-informacion{
-    border: 1px solid red;
+.div-informacion {
     padding: 20px;
     font-family: 'Arial', sans-serif;
-
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .div-btn {
@@ -14,27 +15,39 @@
 .btn-tarea {
     background-color: #3eafff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     color: white;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-tarea:hover {
+    background-color: #2c8fd1;
 }
 
 .btn-archivados {
     background-color: #eeeeee;
     border: 1px solid #aaa;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-archivados:hover {
+    background-color: #e0e0e0;
 }
 
 .div-texto {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     max-width: 400px;
     position: relative;
 }
@@ -42,9 +55,9 @@
 .estado {
     background-color: #c5f7ce;
     color: #2b7a2b;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 12px;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -53,28 +66,113 @@
 
 .div-texto h3 {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #333;
+    padding-right: 80px; /* Espacio para el estado */
 }
 
 .div-texto p {
     font-size: 14px;
     margin-bottom: 20px;
+    color: #666;
+    line-height: 1.4;
 }
 
 .div-integrantes p {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: #333;
 }
 
 .div-asignaciones {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     font-size: 2rem;
+    flex-wrap: wrap;
+    max-width: 120px; /* Limita el ancho para forzar saltos de línea */
+    align-items: flex-start;
+}
+
+.emoji-integrante {
+    transition: transform 0.2s ease;
+}
+
+.emoji-integrante:hover {
+    transform: scale(1.1);
 }
 
 .img-integrante {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 2px solid #333;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .div-informacion {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
+
+  .div-btn {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .btn-tarea,
+  .btn-archivados {
+    width: 100%;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+  }
+
+  .div-texto {
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .estado {
+    position: static;
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+
+  .div-texto h3 {
+    font-size: 1.2rem;
+    padding-right: 0;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  .div-texto p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .div-integrantes p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .div-asignaciones {
+    justify-content: flex-start;
+    font-size: 1.8rem;
+    gap: 12px;
+    max-width: 100px; /* Ajuste para móviles */
+    align-items: flex-start;
+  }
+
+  .img-integrante {
+    width: 28px;
+    height: 28px;
+  }
 }

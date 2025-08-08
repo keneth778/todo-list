@@ -1,4 +1,3 @@
-/* header se queda igual si lo quieres como está */
 header {
   display: grid;
   grid-template-columns: 1fr 20rem auto;
@@ -7,42 +6,88 @@ header {
   gap: 1rem;
   background-color: white;
   border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 h1 {
   font-size: 1.5rem;
   display: flex;
   align-items: center;
+  color: #333;
+  font-weight: 700;
 }
 
-/* contenedor de tareas: ya no centra internamente */
 .div-tareas {
   display: flex;
-  align-items: flex-start; /* que los ítems empiecen arriba */
-  /* si no quieres que todo esté pegado al centro horizontal, quita justify-content */
+  align-items: center;
   gap: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid #ddd;
   border-radius: 0.5rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
-  background-color: white;
+  background: #f8f9fa;
 }
 
-/* si necesitas un contador aparte */
 .contador-tareas {
-  background-color: #f0f0f0;
+  background-color: #007bff;
+  color: white;
   border-radius: 0.4rem;
-  padding: 0.1rem 0.5rem;
+  padding: 0.2rem 0.6rem;
   font-weight: bold;
+  font-size: 0.8rem;
+  min-width: 24px;
+  text-align: center;
 }
 
 .div-Logo-usuario {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 100%;
-  border: 1px solid black;
+  border: 2px solid #333;
   font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f8f9fa;
+  transition: transform 0.2s ease;
+}
+
+.div-Logo-usuario:hover {
+  transform: scale(1.05);
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+  h1 {
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .div-tareas {
+    justify-content: center;
+    align-self: center;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+
+  .contador-tareas {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .div-Logo-usuario {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.8rem;
+    justify-self: center;
+    margin-top: 0.5rem;
+  }
 }
