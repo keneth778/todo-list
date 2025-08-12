@@ -9,6 +9,7 @@ export function dashboard(){
 
 
     // Base de datos simulada de tareas
+// Base de datos simulada de tareas
 let tareasDb = [
     {
         titulo: "Hola mundo",
@@ -33,9 +34,33 @@ let tareasDb = [
         fechaAs: "2025-07-30",
         fechaEn: "2025-08-07",
         integrantes: ["🫩", "🤑", "🤡"]
+    },
+    // Nuevas tareas agregadas
+    {
+        titulo: "Tarea adicional 1",
+        estado: "Pendiente",
+        descripcion: "Descripción tarea 4",
+        fechaAs: "2025-08-01",
+        fechaEn: "2025-08-08",
+        integrantes: ["🤠", "👽"]
+    },
+    {
+        titulo: "Tarea adicional 2",
+        estado: "En progreso",
+        descripcion: "Descripción tarea 5",
+        fechaAs: "2025-08-02",
+        fechaEn: "2025-08-09",
+        integrantes: ["👻", "🤖", "👾"]
+    },
+    {
+        titulo: "Tarea adicional 3",
+        estado: "Completada",
+        descripcion: "Descripción tarea 6",
+        fechaAs: "2025-08-03",
+        fechaEn: "2025-08-10",
+        integrantes: ["🐶", "🐱"]
     }
 ];
-
    let dashboard = document.createElement('section');
     dashboard.className = "dashboard";
 

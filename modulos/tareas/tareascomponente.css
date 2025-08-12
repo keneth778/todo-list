@@ -1,12 +1,10 @@
 .div-tareas {
   display: flex;
+  flex-direction: column; /* Esta línea es crucial */
   align-items: flex-start;
-  gap: 0.5rem;
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.9rem;
-
+  gap: 1rem; /* Espacio entre tareas */
+  padding: 1rem;
+  width: 100%; /* Asegura que ocupe todo el ancho */
 }
 /* Adaptación para móviles */
 @media (max-width: 768px) {
