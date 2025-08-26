@@ -1,4 +1,4 @@
-export function informacion(tarea,onAddTareaClick) {
+export function informacion(tarea, onAddTareaClick) {
     let div = document.createElement('div');
     div.className = "div-informacion";
 
@@ -11,7 +11,6 @@ export function informacion(tarea,onAddTareaClick) {
     btnTarea.innerText = "+ tarea";
     btnTarea.addEventListener('click', onAddTareaClick);
    
-
     let btnArchivados = document.createElement('button');
     btnArchivados.className = "btn-archivados";
     btnArchivados.innerText = "Archivados";
@@ -25,13 +24,13 @@ export function informacion(tarea,onAddTareaClick) {
 
     let divEstado = document.createElement('div');
     divEstado.className = "estado";
-    divEstado.innerText = tarea.estado;
+    divEstado.innerText = tarea.estado || "Sin estado";
 
     let titulo = document.createElement('h3');
-    titulo.innerText = tarea.titulo;
+    titulo.innerText = tarea.titulo || "Sin título";
 
     let parrafo = document.createElement('p');
-    parrafo.innerText = tarea.descripcion;
+    parrafo.innerText = tarea.descripcion || "Sin descripción";
 
     let divIntegrantes = document.createElement('div');
     divIntegrantes.className = "div-integrantes";
@@ -42,13 +41,20 @@ export function informacion(tarea,onAddTareaClick) {
     let divAsignaciones = document.createElement('div');
     divAsignaciones.className = "div-asignaciones";
 
-    // Usar las caritas del array de tarea
-    tarea.integrantes.forEach(emoji => {
-        let span = document.createElement('span');
-        span.className = "emoji-integrante";
-        span.innerText = emoji;
-        divAsignaciones.appendChild(span);
-    });
+    // Verificar que integrantes existe y es un array
+    if (tarea.integrantes && Array.isArray(tarea.integrantes) ){
+        tarea.integrantes.forEach(emoji => {
+            let span = document.createElement('span');
+            span.className = "emoji-integrante";
+            span.innerText = emoji;
+            divAsignaciones.appendChild(span);
+        });
+    } else {
+        let mensaje = document.createElement('span');
+        mensaje.innerText = "Sin integrantes asignados";
+        mensaje.style.fontStyle = "italic";
+        divAsignaciones.appendChild(mensaje);
+    }
 
     divIntegrantes.appendChild(labelIntegrantes);
     divIntegrantes.appendChild(divAsignaciones);

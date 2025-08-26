@@ -4,71 +4,48 @@ import { informacion } from "../modulos/informacion/informacioncomponente.js";
 import { tareas } from "../modulos/tareas/tareascomponente.js";
 import { formulario } from "../modulos/formulario/formulario.js";
 
-export function dashboard(){
-
-
-
-    // Base de datos simulada de tareas
-// Base de datos simulada de tareas
-let tareasDb = [
-    {
-        titulo: "Hola mundo",
-        estado: "Pendiente",
-        descripcion: "hacer tareas",
-        fechaAs: "2025-07-28",
-        fechaEn: "2025-08-05",
-        integrantes: ["😎", "😚", "🙂‍↔️"]
-    },
-    {
-        titulo: "Hola mundo",
-        estado: "En progreso",
-        descripcion: "hacer tareas",
-        fechaAs: "2025-07-29",
-        fechaEn: "2025-08-06",
-        integrantes: ["😹", "😿"]
-    },
-    {
-        titulo: "Hola mundo",
-        estado: "Completada",
-        descripcion: "hacer tareas",
-        fechaAs: "2025-07-30",
-        fechaEn: "2025-08-07",
-        integrantes: ["🫩", "🤑", "🤡"]
-    },
-    // Nuevas tareas agregadas
-    {
-        titulo: "Tarea adicional 1",
-        estado: "Pendiente",
-        descripcion: "Descripción tarea 4",
-        fechaAs: "2025-08-01",
-        fechaEn: "2025-08-08",
-        integrantes: ["🤠", "👽"]
-    },
-    {
-        titulo: "Tarea adicional 2",
-        estado: "En progreso",
-        descripcion: "Descripción tarea 5",
-        fechaAs: "2025-08-02",
-        fechaEn: "2025-08-09",
-        integrantes: ["👻", "🤖", "👾"]
-    },
-    {
-        titulo: "Tarea adicional 3",
-        estado: "Completada",
-        descripcion: "Descripción tarea 6",
-        fechaAs: "2025-08-03",
-        fechaEn: "2025-08-10",
-        integrantes: ["🐶", "🐱"]
+export async function dashboard() {
+    let tareasDb = []; // Base de datos simulada de tareas
+    
+    try {
+        const resultado = await fetch("https://todo-list-backend-r9lf.onrender.com/tareas");
+        
+        // Verificar si la respuesta es exitosa
+        if (resultado.ok) {
+            const datos = await resultado.json();
+            console.log("Datos recibidos:", datos);
+            tareasDb = datos; // Asignar los datos obtenidos
+        } else {
+            console.warn(`Error ${resultado.status}: No se pudieron cargar las tareas desde el servidor`);
+            // Usar datos por defecto o base de datos simulada vacía
+        }
+        
+    } catch (error) {
+        console.error("Error al conectar con el servidor:", error);
+        console.log("Usando base de datos simulada local");
+        // Datos de ejemplo para probar si el servidor no responde
+        tareasDb = [
+            {
+                id: 1, 
+                titulo: "Tarea de ejemplo", 
+                descripcion: "Descripción de ejemplo",
+                estado: "pendiente",
+                fecha_asignada: "2023-05-15",
+                fecha_entrega: "2023-05-30",
+                integrantes: ["😊", "👨‍💻"]
+            }
+        ];
     }
-];
-   let dashboard = document.createElement('section');
+    
+    // Crear el elemento dashboard
+    let dashboard = document.createElement('section');
     dashboard.className = "dashboard";
-
+    
     // Contenedor para el formulario (inicialmente vacío)
     let formularioContainer = document.createElement('div');
     formularioContainer.className = "formulario-container";
     formularioContainer.style.display = "none";  // Oculto inicialmente
-
+    
     // Función para mostrar/ocultar el formulario
     const toggleFormulario = () => {
         if (formularioContainer.style.display === "none") {
@@ -81,26 +58,43 @@ let tareasDb = [
             formularioContainer.style.display = "none";
         }
     };
-
-    //header
+    
+    // Construir el dashboard
     dashboard.appendChild(header());
-
-    // Agregar el contenedor del formulario
     dashboard.appendChild(formularioContainer);
-
-    //section
-    let seccion1 = document.createElement('section')
-    seccion1.className = "seccion-1"
+    
+    // Sección principal
+    let seccion1 = document.createElement('section');
+    seccion1.className = "seccion-1";
     seccion1.appendChild(tareas(tareasDb));
-    // Pasamos la función toggleFormulario como callback
-    seccion1.appendChild(informacion(tareasDb[0], toggleFormulario));
-
-    dashboard.appendChild(seccion1)
-
-    //footer
-    dashboard.appendChild(footer())
+    
+    // Pasar la primera tarea al componente informacion si existe
+    if (tareasDb.length > 0) {
+        // Mapear los nombres de propiedades de la base de datos a lo que espera el componente
+        const primeraTarea = {
+            titulo: tareasDb[0].titulo || tareasDb[0].nombre || tareasDb[0].title || "Sin título",
+            descripcion: tareasDb[0].descripcion || tareasDb[0].description || "Sin descripción",
+            estado: tareasDb[0].estado || tareasDb[0].estado_tarea || "Sin estado",
+            integrantes: tareasDb[0].integrantes || []
+        };
+        seccion1.appendChild(informacion(primeraTarea, toggleFormulario));
+    } else {
+        // Mostrar un mensaje si no hay tareas
+        const mensaje = document.createElement('p');
+        mensaje.textContent = 'No hay tareas para mostrar';
+        mensaje.className = 'mensaje-vacio';
+        seccion1.appendChild(mensaje);
+    }
+    
+    dashboard.appendChild(seccion1);
+    dashboard.appendChild(footer());
     
     return dashboard;
 }
 
-document.body.appendChild(dashboard());
+// Llamada corregida
+dashboard().then(elemento => {
+    document.body.appendChild(elemento);
+}).catch(error => {
+    console.error("Error al crear el dashboard:", error);
+});
